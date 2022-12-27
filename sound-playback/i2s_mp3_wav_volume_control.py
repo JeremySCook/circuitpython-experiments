@@ -1,7 +1,7 @@
 # audiomixer_demo_i2s.py -- show how to fade up and down playing loops
 # Code based on that of https://github.com/todbot/circuitpython-tricks/blob/main/larger-tricks/audiomixer_demo.py
-# where you can also find the WAV files used
 # 30 Nov 2022 - @todbot / Tod Kurt
+# 15 Dec 2022 - @jeremyscook
 
 import time
 import board
