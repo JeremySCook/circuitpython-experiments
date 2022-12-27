@@ -32,5 +32,3 @@ mixer.voice[0].play( mp30, loop=True )
 
 while True:
     print("voice 0 level=%1.2f" % mixer.voice[0].level)
-
-    # hello
