@@ -41,7 +41,7 @@ while True:
             led.value = 1
             
         # midi.send(NoteOff(44, 120))
-        elif sonar1.distance >= 12 and key_on == 1:            
+        elif sonar1.distance >= 12 and key_on == 1: # Add a dead zone?          
             midi.send(NoteOff(current_note, 120))
             key_on = 0
             led.value = 0
