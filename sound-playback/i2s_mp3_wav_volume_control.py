@@ -25,28 +25,26 @@ audio.play(mixer) # attach mixer to audio playback
 print("audio is now playing")
 
 # set some initial levels
-mixer.voice[0].level = 1.0  # drums on
-mixer.voice[1].level = 0.0  # synth off
+mixer.voice[0].level = 0.0  # drums off
+mixer.voice[1].level = 0.5  # bari-uke on 50%
 
 # load wav and start drum loop playing
-#wave0 = audiocore.WaveFile(open("wav/drumsacuff_22k_s16.wav","rb"))
-mp30 = audiomp3.MP3Decoder(open("mp3/phone40-dial-modem22050-32k.mp3", "rb"))
-mixer.voice[0].play( mp30, loop=True )
-
-# load wav and start synth loop playing
-#wave1 = audiocore.WaveFile(open("wav/snowpeaks_22k_s16.wav","rb"))
 wave0 = audiocore.WaveFile(open("wav/drumsacuff_22k_s16.wav","rb"))
-mixer.voice[1].play( wave0, loop=True )
+mixer.voice[0].play( wave0, loop=True )
+
+# load MP3 and start bari-uke playing
+mp30 = audiomp3.MP3Decoder(open("mp3/bariuke-22050-32k.mp3", "rb"))
+mixer.voice[1].play( mp30, loop=True )
 
 time.sleep(1.0)  # let drums play a bit
 
 # fade each channel up and down
-up_down_inc = 0.01
+up_down_inc = 0.002
 while True:
     print("voice 1 level=%1.2f" % mixer.voice[1].level)
     print("voice 0 level=%1.2f" % mixer.voice[0].level)
-    mixer.voice[1].level = min(max(mixer.voice[1].level + up_down_inc, 0), 1)
-    mixer.voice[0].level = min(max(mixer.voice[0].level - up_down_inc, 0), 1)
+    mixer.voice[0].level = min(max(mixer.voice[0].level - up_down_inc, 0), .5)
+    mixer.voice[1].level = min(max(mixer.voice[1].level + up_down_inc, 0), .5)
     if mixer.voice[0].level == 0 or mixer.voice[1].level == 0:
         up_down_inc = -up_down_inc
     time.sleep(0.1)
