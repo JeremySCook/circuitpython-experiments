@@ -43,7 +43,7 @@ while True:
         keyboard.release(Keycode.M)
     if switch1.value:
         print("switch is on")
-        layout.write('hello there\n')
+        layout.write('hello there')
         LED.value = 0
         time.sleep(0.1)
         LED.value = 1
