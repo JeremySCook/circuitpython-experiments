@@ -31,9 +31,11 @@ while True:
     if button.value == 0 and key_on == 0:
         midi.send(NoteOn(44, 120))  # G sharp 2nd octave, 44th key on piano - velocity = 120
         key_on = 1
+        print("Note On")
         time.sleep(.05) # debounce
         # midi.send(NoteOff(44, 120))
     elif button.value == 1 and key_on == 1:
         midi.send(NoteOff(44, 120))
         key_on = 0
+        print("Note Off")
         time.sleep(.05) # debounce
