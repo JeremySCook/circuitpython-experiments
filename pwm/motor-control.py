@@ -1,7 +1,4 @@
 # PWM example for RPi Pico
-# Used for motor - works w/ 12V input at different speeds
-# Simply cuts off at 5V when not at max PWM, though decelerates more slowly than if entirely cut off
-# Does not start at 50%, but can maintain rotation at that input
 
 import time
 import pwmio
