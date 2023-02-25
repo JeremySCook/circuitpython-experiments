@@ -1,6 +1,5 @@
 # PWM control example for RPi Pico
 # Using L293D motor driver
-# Pico tried ~ 4:00 on Feb 23rd had issue
 
 import time
 import pwmio
