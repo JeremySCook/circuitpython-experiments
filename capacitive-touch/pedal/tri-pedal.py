@@ -27,7 +27,7 @@ touch_threshold_adjust = 300
 midi = adafruit_midi.MIDI(midi_out=usb_midi.ports[1])
 
 touch_pins = (
-    board.GP0, board.GP1, board.GP2
+    board.GP13, board.GP14, board.GP15
 )
 touch_pads = []
 touch_ins = []
@@ -61,4 +61,3 @@ while True:
             noteOn = notes_on[i]
             noteOn.velocity = 0  # noteOff == noteOn w/ zero velocity (as well as NoteOff)
             midi.send( noteOn, channel=midi_channel )
-    
