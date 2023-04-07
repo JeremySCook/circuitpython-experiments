@@ -1,5 +1,5 @@
 # Based on code by todbot: https://github.com/todbot/picotouch/blob/main/circuitpython/picotouch/code.py
-# Modified for 3-pad "RP20FOOTIE" by @jeremyscook 4/7/2023 [still a work in progress]
+# Modified for 3-pad "RP20FOOTIE" by @jeremyscook 4/7/2023
 
 # To use:
 #
