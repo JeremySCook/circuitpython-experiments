@@ -11,6 +11,8 @@
 #
 # To change keys, edit 'keymap' as desired
 #
+# List of keycodes: https://github.com/adafruit/Adafruit_CircuitPython_HID/blob/main/adafruit_hid/keycode.py
+#
 # on Pico / RP2040, need 1M pull-down on each input  (picotouch board has this)
 #
 
