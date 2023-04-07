@@ -4,7 +4,7 @@
 # To use:
 #
 # 1. Install needed libraries:
-#   circup install adafruit_midi adafruit_debouncer adafruit_ticks
+#   circup install adafruit_hid adafruit_debouncer adafruit_ticks
 #
 # 2. Copy over this file as code.py:
 #   cp picotouch/code.py /Volumes/CIRCUITPY/code.py
