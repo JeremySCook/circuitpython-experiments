@@ -4,7 +4,7 @@
 # To use:
 #
 # 1. Install needed libraries:
-#   circup install adafruit_hid adafruit_debouncer adafruit_ticks
+#   circup install adafruit_midi adafruit_debouncer adafruit_ticks
 #
 # 2. Copy over this file as code.py:
 #   cp picotouch/code.py /Volumes/CIRCUITPY/code.py
@@ -33,8 +33,7 @@ keymap = (
     # description  # list of keycodes or string to print out
     ("Capital A",  (Keycode.SHIFT, Keycode.A) ),   # key  0
     ("Hello world", "Hello world"),  # key  1
-    (None, None),  # key  2
-    (None, None),  # key  3
+    (None, None),
 )
 
 touch_threshold_adjust = 300
