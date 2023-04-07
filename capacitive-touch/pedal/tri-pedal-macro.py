@@ -1,6 +1,5 @@
 # Based on code by todbot: https://github.com/todbot/picotouch/blob/main/circuitpython/picotouch/code.py
 # Modified for 3-pad "RP20FOOTIE" by @jeremyscook 4/7/2023
-
 # To use:
 #
 # 1. Install needed libraries:
@@ -35,7 +34,7 @@ keymap = (
     # description  # list of keycodes or string to print out
     ("Capital A",  (Keycode.SHIFT, Keycode.A) ),   # key  0
     ("Hello world", "Hello world"),  # key  1
-    (None, None),
+    ("Spacebar",  (Keycode.SPACE, ) )
 )
 
 touch_threshold_adjust = 300
