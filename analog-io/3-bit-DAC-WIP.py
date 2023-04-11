@@ -1,23 +1,13 @@
-# Not yet working
+#not yet working
 
-import board
-import digitalio
-import time
+from time import sleep
+from adafruit_itertools import cycle
 
-step_delay = .1
+# other parts unchanged, though it could still be cleaned up, too.
 
-DAC_pin = (
-    board.GP20, board.GP19, board.GP18
-)
-
-for DAC in DAC_pin:
-    DAC_pin(DAC).direction = digitalio.Direction.OUTPUT
-
-while True:
-    DAC_pin(0).value = 0
-    DAC_pin(1).value = 0
-    DAC_pin(2).value = 0
-    
-
-    print("binary 0")
-    time.sleep(step_delay)
+#identical in behavior to the while(True) loop
+for x in cycle(range(8)):
+   digits = [int(y) for y in bin(x)[2:]]
+   ASB.value, BSB.value, CSB.value = digits[-3:]
+   print("binary {}".format(x))
+   sleep(SLEEP_DELAY)
