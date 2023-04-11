@@ -1,4 +1,4 @@
-#not yet working
+#Attempt to clean up, not yet working
 
 from time import sleep
 from adafruit_itertools import cycle
