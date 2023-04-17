@@ -1,4 +1,4 @@
-# Potentially add capacitor to even out
+# Turns on onboard LED at different intensities. Can experiement with frequency
 
 import board
 import pwmio
@@ -10,10 +10,10 @@ analog_out.frequency = 500
 while True:
     analog_out.duty_cycle = 65535
     print(analog_out.duty_cycle)
-    time.sleep(.5)
+    time.sleep(1)
     analog_out.duty_cycle = int(50 / 100 * 65535)  # Expressed as percentage (50%)
     print(analog_out.duty_cycle)
-    time.sleep(.5)
+    time.sleep(1)
     analog_out.duty_cycle = 0
     print(analog_out.duty_cycle)
-    time.sleep(.5)
+    time.sleep(1)
