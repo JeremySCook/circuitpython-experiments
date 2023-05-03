@@ -19,11 +19,11 @@ speaker = pwmio.PWMOut(board.GP26, frequency=440, duty_cycle=0, variable_frequen
 
 while True:
     if touch_pin0.value:
-        speaker.frequency = 196 # G
+        speaker.frequency = 65 # C2 ~65.41Hz
     if touch_pin1.value:
-        speaker.frequency = 147 # D
+        speaker.frequency = 69 # C2# ~69.3Hz
     if touch_pin2.value:
-        speaker.frequency = 110 # A
+        speaker.frequency = 73 # D ~73.42Hz
         
     time.sleep(.02) # 10ms sleep time
     
