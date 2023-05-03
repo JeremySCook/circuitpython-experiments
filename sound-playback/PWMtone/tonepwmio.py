@@ -1,7 +1,7 @@
 import time
 import pwmio
 import board
-import digitalio
+import digitalio # Needed? may be redundant
 
 speaker = pwmio.PWMOut(board.GP26, frequency=440, duty_cycle=32768, variable_frequency = 1) # initializer creates instance of pwmio class
 
