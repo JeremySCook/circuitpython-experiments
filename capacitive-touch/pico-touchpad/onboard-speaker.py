@@ -1,12 +1,10 @@
-# WIP, needs significant revision
-
 import board
 import touchio
 import time
 import pwmio
 import digitalio
 
-touch_pin0 = touchio.TouchIn(board.GP11)
+touch_pin0 = touchio.TouchIn(board.GP0)
 touch_pin1 = touchio.TouchIn(board.GP1)
 touch_pin2 = touchio.TouchIn(board.GP2)
 touch_pin3 = touchio.TouchIn(board.GP3)
@@ -18,6 +16,10 @@ touch_pin8 = touchio.TouchIn(board.GP8)
 touch_pin9 = touchio.TouchIn(board.GP9)
 touch_pin10 = touchio.TouchIn(board.GP10)
 touch_pin11 = touchio.TouchIn(board.GP11)
+touch_pin12 = touchio.TouchIn(board.GP12)
+touch_pin13 = touchio.TouchIn(board.GP13)
+touch_pin14 = touchio.TouchIn(board.GP14)
+touch_pin15 = touchio.TouchIn(board.GP15)
 
 touch_pin0.threshold = 1500
 touch_pin1.threshold = 1500
@@ -31,6 +33,10 @@ touch_pin8.threshold = 1500
 touch_pin9.threshold = 1500
 touch_pin10.threshold = 1500
 touch_pin11.threshold = 1500
+touch_pin12.threshold = 1500
+touch_pin13.threshold = 1500
+touch_pin14.threshold = 1500
+touch_pin15.threshold = 1500
 
 led = digitalio.DigitalInOut(board.LED) # defaults to input
 led.direction = digitalio.Direction.OUTPUT
@@ -45,29 +51,38 @@ while True:
     if touch_pin2.value:
         speaker.frequency = 73 # D ~73.42Hz
     if touch_pin3.value:
-        speaker.frequency = 65 # C2 ~65.41Hz
+        speaker.frequency = 78 # C2 ~65.41Hz
     if touch_pin4.value:
-        speaker.frequency = 69 # C2# ~69.3Hz
+        speaker.frequency = 82 # C2# ~69.3Hz
     if touch_pin5.value:
-        speaker.frequency = 73 # D ~73.42Hz
+        speaker.frequency = 87 # D ~73.42Hz
     if touch_pin6.value:
-        speaker.frequency = 65 # C2 ~65.41Hz
+        speaker.frequency = 93 # C2 ~65.41Hz
     if touch_pin7.value:
-        speaker.frequency = 69 # C2# ~69.3Hz
+        speaker.frequency = 98 # C2# ~69.3Hz
     if touch_pin8.value:
-        speaker.frequency = 73 # D ~73.42Hz
+        speaker.frequency = 104 # D ~73.42Hz
     if touch_pin9.value:
-        speaker.frequency = 65 # C2 ~65.41Hz
+        speaker.frequency = 110 # C2 ~65.41Hz
     if touch_pin10.value:
-        speaker.frequency = 69 # C2# ~69.3Hz
+        speaker.frequency = 117 # C2# ~69.3Hz
     if touch_pin11.value:
-        speaker.frequency = 73 # D ~73.42Hz
-      
+        speaker.frequency = 123 # D ~73.42Hz
+    if touch_pin12.value:
+        speaker.frequency = 131 # D ~73.42Hz
+    if touch_pin13.value:
+        speaker.frequency = 139 # C2 ~65.41Hz
+    if touch_pin14.value:
+        speaker.frequency = 147 # C2# ~69.3Hz
+    if touch_pin15.value:
+        speaker.frequency = 156 # D ~73.42Hz
+        
     time.sleep(.02) # 10ms sleep time
     
     if touch_pin0.value or touch_pin1.value or touch_pin2.value or touch_pin3.value\
     or touch_pin4.value or touch_pin5.value or touch_pin6.value or touch_pin7.value\
-    or touch_pin8.value or touch_pin9.value or touch_pin10.value or touch_pin11.value:
+    or touch_pin8.value or touch_pin9.value or touch_pin10.value or touch_pin11.value\
+    or touch_pin12.value or touch_pin13.value or touch_pin14.value or touch_pin15.value:
         led.value = True
         speaker.duty_cycle = 32768
     else:
