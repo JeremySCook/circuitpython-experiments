@@ -51,31 +51,31 @@ while True:
     if touch_pin2.value:
         speaker.frequency = 73 # D ~73.42Hz
     if touch_pin3.value:
-        speaker.frequency = 78 # C2 ~65.41Hz
+        speaker.frequency = 78
     if touch_pin4.value:
-        speaker.frequency = 82 # C2# ~69.3Hz
+        speaker.frequency = 82
     if touch_pin5.value:
-        speaker.frequency = 87 # D ~73.42Hz
+        speaker.frequency = 87
     if touch_pin6.value:
-        speaker.frequency = 93 # C2 ~65.41Hz
+        speaker.frequency = 93
     if touch_pin7.value:
-        speaker.frequency = 98 # C2# ~69.3Hz
+        speaker.frequency = 98
     if touch_pin8.value:
-        speaker.frequency = 104 # D ~73.42Hz
+        speaker.frequency = 104
     if touch_pin9.value:
-        speaker.frequency = 110 # C2 ~65.41Hz
+        speaker.frequency = 110
     if touch_pin10.value:
-        speaker.frequency = 117 # C2# ~69.3Hz
+        speaker.frequency = 117
     if touch_pin11.value:
-        speaker.frequency = 123 # D ~73.42Hz
+        speaker.frequency = 123
     if touch_pin12.value:
-        speaker.frequency = 131 # D ~73.42Hz
+        speaker.frequency = 131
     if touch_pin13.value:
-        speaker.frequency = 139 # C2 ~65.41Hz
+        speaker.frequency = 139
     if touch_pin14.value:
-        speaker.frequency = 147 # C2# ~69.3Hz
+        speaker.frequency = 147
     if touch_pin15.value:
-        speaker.frequency = 156 # D ~73.42Hz
+        speaker.frequency = 156
         
     time.sleep(.02) # 10ms sleep time
     
