@@ -1,3 +1,4 @@
+# Write your code here :-)
 import board
 import touchio
 import time
@@ -41,7 +42,10 @@ touch_pin15.threshold = 1500
 led = digitalio.DigitalInOut(board.LED) # defaults to input
 led.direction = digitalio.Direction.OUTPUT
 
-speaker = pwmio.PWMOut(board.GP27, frequency=440, duty_cycle=0, variable_frequency = 1) # initializer creates instance of pwmio class
+speaker = pwmio.PWMOut(board.GP26, frequency=440, duty_cycle=0, variable_frequency = 1) # initializer creates instance of pwmio class
+
+speaker_stereo = digitalio.DigitalInOut(board.GP27)
+speaker_stereo.direction = digitalio.Direction.INPUT # set to tri-state if stereo not used
 
 while True:
     if touch_pin0.value:
