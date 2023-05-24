@@ -13,6 +13,7 @@
 
 """
 Modified - Still WIP JSCook 5/23/2023
+Possible to use MP3 files? Out of space with just a few clips.
 """
 
 import time
@@ -32,7 +33,8 @@ print("Hello")
 wav_files = (
     ('wav/amen_22k16b_160bpm.wav', 1.0),
     ('wav/pt_limor_modem_vox_01.wav', 0.4),
-    ('wav/snowpeaks_22k_s16.wav', 0.8)
+    ('wav/snowpeaks_22k_s16.wav', 0.8),
+    ('wav/doom_22050.wav', 1)
 )
 
 touch_pins = (
@@ -73,7 +75,7 @@ def handle_mixer(num, pressed):
     voice = mixer.voice[num]   # get mixer voice
     if pressed:
         wave = audiocore.WaveFile(open(wav_files[i][0],"rb"))
-        voice.play(wave, loop=False)
+        voice.play(wave, loop=True)
         voice.level = 1 # play at level in wav_file list
         print("playing clip ", num)
     else: # released
@@ -83,7 +85,7 @@ def handle_mixer(num, pressed):
 while True:
     for i in range(len(wav_files)):
         touch = touch_pads[i]
-        touch.update()  
+        touch.update()
         if touch.rose:
             led.value = True
             handle_mixer(i, True)
