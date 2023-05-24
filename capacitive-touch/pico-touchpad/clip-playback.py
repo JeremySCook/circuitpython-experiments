@@ -31,10 +31,11 @@ print("Hello")
 
 # list of (samples to play, mixer gain level)
 wav_files = (
-    ('wav/amen_22k16b_160bpm.wav', 1.0),
-    ('wav/pt_limor_modem_vox_01.wav', 0.4),
-    ('wav/snowpeaks_22k_s16.wav', 0.8),
-    ('wav/doom_22050.wav', 1)
+    ('wav/doom_22050.wav', 1),
+    ('wav/flaming_globes_22050.wav', 1),
+    ('wav/quad_laser_22050.wav', 1),
+    ('wav/phrasing_boom_22050.wav', 1),
+    ('wav/flash1_22050.wav', 1)
 )
 
 touch_pins = (
