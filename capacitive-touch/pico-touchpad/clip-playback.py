@@ -31,11 +31,16 @@ print("Hello")
 
 # list of (samples to play, mixer gain level)
 wav_files = (
-    ('wav/doom_22050.wav', 1),
-    ('wav/flaming_globes_22050.wav', 1),
-    ('wav/quad_laser_22050.wav', 1),
-    ('wav/phrasing_boom_22050.wav', 1),
-    ('wav/flash1_22050.wav', 1)
+    ('wav/doom_16000.wav', 1),
+    ('wav/flaming_globes_16000.wav', 1),
+    ('wav/flash1_16000.wav', 1),
+    ('wav/flash2_16000.wav', 1),
+    ('wav/moon_16000.wav', 1),
+    ('wav/phrasing_16000.wav', 1),
+    ('wav/pretty_good_16000.wav', 1),
+    ('wav/haidoken_16000.wav', 1),
+    ('wav/haidoken2_16000.wav', 1),
+    ('wav/mortal_kombat_16000.wav', 1)
 )
 
 touch_pins = (
@@ -63,7 +68,7 @@ speaker_stereo.direction = digitalio.Direction.INPUT # set to tri-state if stere
 led = digitalio.DigitalInOut(board.LED)
 led.direction = digitalio.Direction.OUTPUT
 
-mixer = audiomixer.Mixer(voice_count=len(wav_files), sample_rate=22050, channel_count=1,
+mixer = audiomixer.Mixer(voice_count=len(wav_files), sample_rate=16000, channel_count=1,
                          bits_per_sample=16, samples_signed=True)
 audio.play(mixer) # attach mixer to audio playback
 
