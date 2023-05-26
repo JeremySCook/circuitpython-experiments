@@ -27,7 +27,7 @@ print("audio is now playing")
 mixer.voice[0].level = 1  # MP3 file playing at full volume
 
 # load wav and start drum loop playing
-mp30 = audiomp3.MP3Decoder(open("mp3/bariuke-22050-32k.mp3", "rb"))
+mp30 = audiomp3.MP3Decoder(open("mp3/bariuke-22050.mp3", "rb"))
 mixer.voice[0].play( mp30, loop=True )
 
 while True:
