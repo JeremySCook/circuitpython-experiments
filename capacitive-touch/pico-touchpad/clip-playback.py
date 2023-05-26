@@ -34,12 +34,12 @@ wav_files = (
     ('wav/doom_16000.wav', 1),
     ('wav/flaming_globes_16000.wav', 1),
     ('wav/flash1_16000.wav', 1),
-    ('wav/flash2_16000.wav', 1),
+    ('wav/phased_plasma_rifle_16000.wav', 1),
     ('wav/moon_16000.wav', 1),
     ('wav/phrasing_16000.wav', 1),
     ('wav/pretty_good_16000.wav', 1),
     ('wav/haidoken_16000.wav', 1),
-    ('wav/haidoken2_16000.wav', 1),
+    ('wav/laser_16000.wav', 1),
     ('wav/mortal_kombat_16000.wav', 1)
 )
 
