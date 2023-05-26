@@ -33,7 +33,7 @@ wave0 = audiocore.WaveFile(open("wav/drumsacuff_22k_s16.wav","rb"))
 mixer.voice[0].play( wave0, loop=True )
 
 # load MP3 and start bari-uke playing
-mp30 = audiomp3.MP3Decoder(open("mp3/bariuke-22050-32k.mp3", "rb"))
+mp30 = audiomp3.MP3Decoder(open("mp3/bariuke-22050.mp3", "rb"))
 mixer.voice[1].play( mp30, loop=True )
 
 time.sleep(1.0)  # let drums play a bit
