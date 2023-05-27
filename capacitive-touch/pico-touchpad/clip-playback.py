@@ -40,7 +40,9 @@ wav_files = (
     ('wav/pretty_good_16000.wav', 1),
     ('wav/haidoken_16000.wav', 1),
     ('wav/laser_16000.wav', 1),
-    ('wav/mortal_kombat_16000.wav', 1)
+    ('wav/mortal_kombat_16000.wav', 1),
+    ('wav/gates_16000.wav', 1),
+    ('wav/snoop_16000.wav', 1)
 )
 
 touch_pins = (
