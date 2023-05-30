@@ -10,7 +10,7 @@ import audiomp3
 import audiomixer
 import audiobusio
 
-i2s_bclk = board.GP0   # BCK on PCM5102 I2S DAC (SCK pin to Gnd)
+i2s_bclk = board.GP0   # BCLK on PCM5102 I2S DAC (SCK pin to Gnd)
 i2s_wsel = board.GP1  # LCLK on PCM5102
 i2s_data = board.GP2  # DIN on PCM5102
 num_voices = 1
