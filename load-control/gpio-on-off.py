@@ -1,7 +1,6 @@
 import time
 import board
 import digitalio
-import time
 
 step_delay = 1
 
