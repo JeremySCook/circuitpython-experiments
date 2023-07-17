@@ -27,7 +27,8 @@ def pin_steps(average_value, touch_pinmin, touch_pinsteps):
     return step_value
 
 while True:
-    
+
     #print((total_touch(touch_pinA),total_touch(touch_pinB)))
-    print(pin_steps(total_touch(touch_pinA), touch_pinAmin, touch_pinA_steps)\
-    ,pin_steps(total_touch(touch_pinB), touch_pinBmin, touch_pinB_steps))
+    print((pin_steps(total_touch(touch_pinA), touch_pinAmin, touch_pinA_steps)\
+    ,pin_steps(total_touch(touch_pinB), touch_pinBmin, touch_pinB_steps)))
+
