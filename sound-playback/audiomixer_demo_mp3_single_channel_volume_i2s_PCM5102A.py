@@ -5,7 +5,8 @@
 # 15 Dec 2022 - @jeremyscook
 # July 31 2022 - @jeremyscook modified for PCM5102A I2S DAC boards
 # Reference: https://todbot.com/blog/2023/05/16/cheap-stereo-line-out-i2s-dac-for-circuitpython-arduino-synths/
-# Arrange DAC on breadboard w/ SCK directly attached to GND, BCK to GPIO 17, DIN to GPIO 16
+# Arrange DAC on breadboard w/ SCK directly attached to RPi Pico GND, BCK to GPIO 17, DIN to GPIO 16
+# Sound file: 
 
 import time
 import board
