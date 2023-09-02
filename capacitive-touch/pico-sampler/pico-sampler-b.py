@@ -1,5 +1,6 @@
 # Based on code by todbot: https://github.com/todbot/picotouch/blob/main/circuitpython/picotouch/code.py
 # Modified for3-pad MIDI thingy by @jeremyscook 3/6/2023
+# Not working as of 9/2/2023 - looks like at least one pin assigned isn't actually capacitive - need to test
 
 import time
 import board
