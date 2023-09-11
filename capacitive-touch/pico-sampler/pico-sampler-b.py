@@ -58,6 +58,7 @@ while True:
             noteOn = NoteOn((12*octave) + i, midi_velocity)
             notes_on[i] = noteOn
             midi.send( noteOn, channel=midi_channel )
+            print("touch pad", i)
                 
         if touch.fell:
             led.value = False
