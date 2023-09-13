@@ -20,7 +20,6 @@ octave = 4
 
 midi_velocity = 64  # midpoint
 midi_channel = 0  # 0-15
-midi_cc_num = 1   # standard modwheel
 
 touch_threshold_adjust = 300
 
@@ -59,11 +58,16 @@ while True:
         touch.update()
         if touch.rose:
             if i == option1_pad:
-                print("option 1 pressed")
+                print('pitch up!')
+                pitchbend_val = 8192 + 4096
+                midi.send( PitchBend(pitchbend_val), channel=midi_channel)
             elif i == option2_pad:
-                print("option 2 pressed")
+                print('pitch middle!')
+                pitchbend_val = 8192 - 4096
+                midi.send( PitchBend(pitchbend_val), channel=midi_channel)
             elif i == option3_pad:
-                print("option 3 pressed")
+                print('mod up!')
+                midi.send( ControlChange(11, 0), channel=midi_channel)
             else:
                 led.value = True
                 midi.send( PitchBend(8192) , channel=midi_channel)
@@ -73,14 +77,19 @@ while True:
                 print("touch pad", i+1)
 
         if touch.fell:
-            led.value = False
             if i == option1_pad:
+                pitchbend_val = 8192  # reset to midpoint
+                midi.send( PitchBend(pitchbend_val), channel=midi_channel)
                 print("option 1 released")
             elif i == option2_pad:
+                pitchbend_val = 8192  # reset to midpoint
+                midi.send( PitchBend(pitchbend_val), channel=midi_channel)
                 print("option 2 released")
             elif i == option3_pad:
-                print("option 3 released")
+                modwheel_val = 127  # reset to normal
+                midi.send( ControlChange(11, 127), channel=midi_channel)
             else:
+                led.value = False
                 noteOn = notes_on[i]
                 noteOn.velocity = 0  # noteOff == noteOn w/ zero velocity (as well as NoteOff)
                 midi.send( noteOn, channel=midi_channel )
