@@ -1,6 +1,5 @@
 # Based on code by todbot: https://github.com/todbot/picotouch/blob/main/circuitpython/picotouch/code.py
 # Modified for3-pad MIDI thingy by @jeremyscook 3/6/2023
-# Not working as of 9/2/2023 - looks like at least one pin assigned isn't actually capacitive - need to test
 
 import time
 import board
@@ -30,8 +29,14 @@ midi = adafruit_midi.MIDI(midi_out=usb_midi.ports[1])
 touch_pins = (
     board.PAD1, board.PAD2, board.PAD3, board.PAD4, board.PAD5, board.PAD6,
     board.PAD7, board.PAD8, board.PAD9, board.PAD10, board.PAD11, board.PAD12,
-    board.PAD13, board.PAD14, board.PAD15, board.PAD16
+    board.PAD13, board.PAD14, board.PAD15, board.PAD16, board.OP1, board.OP2,
+    board.OP3
 )
+
+option1_pad = 16
+option2_pad = 17
+option3_pad = 18
+
 touch_pads = []
 touch_ins = []
 
@@ -53,15 +58,30 @@ while True:
         touch = touch_pads[i]
         touch.update()
         if touch.rose:
-            led.value = True
-            midi.send( PitchBend(8192) , channel=midi_channel)
-            noteOn = NoteOn((12*octave) + i, midi_velocity)
-            notes_on[i] = noteOn
-            midi.send( noteOn, channel=midi_channel )
-            print("touch pad", i)
-                
+            if i == option1_pad:
+                print("option 1 pressed")
+            elif i == option2_pad:
+                print("option 2 pressed")
+            elif i == option3_pad:
+                print("option 3 pressed")
+            else:
+                led.value = True
+                midi.send( PitchBend(8192) , channel=midi_channel)
+                noteOn = NoteOn((12*octave) + i, midi_velocity)
+                notes_on[i] = noteOn
+                midi.send( noteOn, channel=midi_channel )
+                print("touch pad", i+1)
+
         if touch.fell:
             led.value = False
-            noteOn = notes_on[i]
-            noteOn.velocity = 0  # noteOff == noteOn w/ zero velocity (as well as NoteOff)
-            midi.send( noteOn, channel=midi_channel )
+            if i == option1_pad:
+                print("option 1 released")
+            elif i == option2_pad:
+                print("option 2 released")
+            elif i == option3_pad:
+                print("option 3 released")
+            else:
+                noteOn = notes_on[i]
+                noteOn.velocity = 0  # noteOff == noteOn w/ zero velocity (as well as NoteOff)
+                midi.send( noteOn, channel=midi_channel )
+                print("touch pad off", i+1)
