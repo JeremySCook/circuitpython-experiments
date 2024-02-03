@@ -1,6 +1,7 @@
 # Based on code by todbot: https://github.com/todbot/picotouch/blob/main/circuitpython/picotouch/code.py
 # Modified for3-pad MIDI thingy by @jeremyscook 3/6/2023
 # Used without modification for MIDI input with Pico and Pico Touch 2 capacitive input board @jeremyscook 2/3/2024
+# Need to load libraries: adafruit_debouncer, adafruit_ticks, and adafruit_midi
 
 import time
 import board
