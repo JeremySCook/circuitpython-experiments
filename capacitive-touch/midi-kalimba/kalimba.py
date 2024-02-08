@@ -1,5 +1,6 @@
 # Based on code by todbot: https://github.com/todbot/picotouch/blob/main/circuitpython/picotouch/code.py
 # Modified for3-pad MIDI thingy by @jeremyscook 3/6/2023
+# Modified for mini kalimba by @jeremyscook 2024
 
 import time
 import board
