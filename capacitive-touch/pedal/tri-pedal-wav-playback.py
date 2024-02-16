@@ -37,14 +37,13 @@ wav_files = (
 )
 
 touch_pins = (
-    board.GP13, board.GP14, board.GP15
-)
+    board.GP13, board.GP14, board.GP15)
 touch_pads = []
 touch_ins = []
 
 for pin in touch_pins:
     touchin = touchio.TouchIn(pin)
-    touchin.threshold = 3000
+    touchin.threshold = 1800
     touch_pads.append( Button(touchin, value_when_pressed=True))
     touch_ins.append(touchin)  # for debug
 
