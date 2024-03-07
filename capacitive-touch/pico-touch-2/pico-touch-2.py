@@ -11,6 +11,8 @@ touch_pin2 = touchio.TouchIn(board.GP2)
 led = digitalio.DigitalInOut(board.LED) # defaults to input
 led.direction = digitalio.Direction.OUTPUT
 
+touch_threshold_adjust = 300
+
 while True:
     if touch_pin0.value or touch_pin1.value or touch_pin2.value:
         led.value = True
