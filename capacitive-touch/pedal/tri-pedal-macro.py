@@ -2,11 +2,10 @@
 # Modified for 3-pad "RP20FOOTIE" by @jeremyscook 4/7/2023
 # To use:
 #
-# 1. Install needed libraries:
-#   circup install adafruit_hid adafruit_debouncer adafruit_ticks
+# 1. Install needed libraries, available here: https://learn.adafruit.com/welcome-to-circuitpython/circuitpython-libraries
+#   adafruit_hid adafruit_debouncer adafruit_ticks
 #
-# 2. Copy over this file as code.py:
-#   cp picotouch/code.py /Volumes/CIRCUITPY/code.py
+# 2. Copy over this file as code.py
 #
 # To change keys, edit 'keymap' as desired
 #
