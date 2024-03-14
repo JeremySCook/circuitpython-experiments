@@ -1,36 +1,41 @@
 # SPDX-FileCopyrightText: 2018 Kattni Rembor for Adafruit Industries
 #
 # SPDX-License-Identifier: MIT
-# Modified by @jeremyscook Mar 12, 2024
 
-"""CircuitPython Essentials NeoPixel example"""
+"""CircuitPython Essentials Analog In example"""
 import time
 import board
-from rainbowio import colorwheel
+from analogio import AnalogIn
+# from rainbowio import colorwheel
 import neopixel
+# import math
+import simpleio
 
 pixel_pin = board.GP0
 num_pixels = 12
 
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.3, auto_write=False)
 
+analog_in = AnalogIn(board.A0)
+samples_number = 50
+analog_min = 2
+analog_max = 3.3
 
-def color_chase(color, wait):
+def get_voltage(pin):
+    totalAnalog = 0
+    for i in range(samples_number):
+        if (pin.value * 3.3/65536) > totalAnalog:
+            totalAnalog = pin.value * 3.3/65536
+        time.sleep(.001)
+    return totalAnalog
+
+def color_sound(color, wait, LED_value):
     for i in range(num_pixels):
-        pixels[i] = color
-        time.sleep(wait)
-        pixels.show()
-    time.sleep(0.5)
-
-
-def rainbow_cycle(wait):
-    for j in range(255):
-        for i in range(num_pixels):
-            rc_index = (i * 256 // num_pixels) + j
-            pixels[i] = colorwheel(rc_index & 255)
-        pixels.show()
-        time.sleep(wait)
-
+        if i < LED_value:
+            pixels[i] = color
+        else:
+            pixels[i] = BLANK
+    pixels.show
 
 RED = (255, 0, 0)
 YELLOW = (255, 150, 0)
@@ -38,24 +43,13 @@ GREEN = (0, 255, 0)
 CYAN = (0, 255, 255)
 BLUE = (0, 0, 255)
 PURPLE = (180, 0, 255)
+BLANK = (0, 0, 0)
 
 while True:
-    pixels.fill(RED)
-    pixels.show()
-    # Increase or decrease to change the speed of the solid color change.
-    time.sleep(1)
-    pixels.fill(GREEN)
-    pixels.show()
-    time.sleep(1)
-    pixels.fill(BLUE)
-    pixels.show()
-    time.sleep(1)
-
-    color_chase(RED, 0.1)  # Increase the number to slow down the color chase
-    color_chase(YELLOW, 0.1)
-    color_chase(GREEN, 0.1)
-    color_chase(CYAN, 0.1)
-    color_chase(BLUE, 0.1)
-    color_chase(PURPLE, 0.1)
-
-    rainbow_cycle(0)  # Increase the number to slow down the rainbow
+    magnitude = get_voltage(analog_in)
+    # print(magnitude)
+    mapped_value = simpleio.map_range(magnitude, analog_min, analog_max, 0, 11)
+    int_mapped_value = int(mapped_value)
+    print(int_mapped_value)
+    color_sound(RED, .001, int_mapped_value)
+    time.sleep(0.1)
