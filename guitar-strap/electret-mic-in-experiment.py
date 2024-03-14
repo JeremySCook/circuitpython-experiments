@@ -8,14 +8,14 @@ import board
 from analogio import AnalogIn
 
 analog_in = AnalogIn(board.A0)
-samples_number = 10
+samples_number = 50
 
 def get_voltage(pin):
     totalAnalog = 0
     for i in range(samples_number):
         if (pin.value * 3.3/65536) > totalAnalog:
             totalAnalog = pin.value * 3.3/65536
-        time.sleep(.01)
+        time.sleep(.001)
     return totalAnalog
 
 
