@@ -31,11 +31,16 @@ def get_voltage(pin):
 
 def color_sound(color, wait, LED_value):
     for i in range(num_pixels):
-        if i < LED_value:
+        if i < 20: #for some reason not showing LEDs, serial monitor indicates show, works with different code
             pixels[i] = color
+            pixels.show
+            time.sleep(0.01)
+            print("show")
         else:
             pixels[i] = BLANK
-    pixels.show
+            pixels.show
+            time.sleep(0.01)
+            print("no-show")
 
 RED = (255, 0, 0)
 YELLOW = (255, 150, 0)
