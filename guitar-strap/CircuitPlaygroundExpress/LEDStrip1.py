@@ -29,7 +29,7 @@
 
 # Circuit Playground Sound Meter
 # Modified by @jeremyscook March 2024 to also output sound levels on addressable
-# LED strip - sort of works, but has artifacts
+# LED strip
 
 import array
 import math
@@ -82,7 +82,7 @@ def mean(values):
 
 
 def volume_color(volume):
-    return 200, volume * (255 // NUM_PIXELS), 0
+    return 200, volume * (255 // (NUM_PIXELS+NUM_PIXELS_EXTRA)), 0
 
 
 # Main program
@@ -120,14 +120,15 @@ while True:
     magnitude = normalized_rms(samples)
     # You might want to print this to see the values.
     # print(magnitude)
-
     # Compute scaled logarithmic reading in the range 0 to NUM_PIXELS
     c = log_scale(constrain(magnitude, input_floor, input_ceiling),
-                  input_floor, input_ceiling, 0, NUM_PIXELS)
+                  input_floor, input_ceiling, 0, (NUM_PIXELS_EXTRA + NUM_PIXELS))
 
     # Light up pixels that are below the scaled and interpolated magnitude.
     pixels.fill(0)
     pixels_extra.fill(0)
+    #c=20
+    print(c)
     for i in range(NUM_PIXELS):
         if i < c:
             pixels[i] = volume_color(i)
@@ -136,18 +137,18 @@ while True:
             peak = min(c, NUM_PIXELS - 1)
         elif peak > 0:
             peak = peak - 1
-        if peak > 0:
-            pixels[int(peak)] = PEAK_COLOR
+        #if peak > 0:
+        #    pixels[int(peak)] = PEAK_COLOR
     pixels.show()
-    
-    for i in range(NUM_PIXELS_EXTRA):
+
+    for i in range(NUM_PIXELS, (NUM_PIXELS_EXTRA+NUM_PIXELS)):
         if i < c:
-            pixels_extra[i] = volume_color(i)
+            pixels_extra[i-NUM_PIXELS] = volume_color(i)
         # Light up the peak pixel and animate it slowly dropping.
         if c >= peak:
             peak = min(c, NUM_PIXELS_EXTRA - 1)
         elif peak > 0:
             peak = peak - 1
-        if peak > 0:
-            pixels_extra[int(peak)] = PEAK_COLOR
-    pixels_extra.show()        
+        #if peak > 0:
+        #   pixels_extra[int(peak)] = PEAK_COLOR
+    pixels_extra.show()
