@@ -137,8 +137,8 @@ while True:
             peak = min(c, NUM_PIXELS - 1)
         elif peak > 0:
             peak = peak - 1
-        #if peak > 0:
-        #    pixels[int(peak)] = PEAK_COLOR
+        if peak > 0 and peak <= NUM_PIXELS:
+            pixels[int(peak)] = PEAK_COLOR
     pixels.show()
 
     for i in range(NUM_PIXELS, (NUM_PIXELS_EXTRA+NUM_PIXELS)):
@@ -149,6 +149,6 @@ while True:
             peak = min(c, NUM_PIXELS_EXTRA - 1)
         elif peak > 0:
             peak = peak - 1
-        #if peak > 0:
-        #   pixels_extra[int(peak)] = PEAK_COLOR
+        if peak > NUM_PIXELS:
+           pixels_extra[int(peak-NUM_PIXELS)] = PEAK_COLOR
     pixels_extra.show()
