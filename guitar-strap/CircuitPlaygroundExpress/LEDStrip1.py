@@ -41,7 +41,7 @@ import neopixel
 PEAK_COLOR = (100, 0, 255)
 # Number of total pixels - 10 build into Circuit Playground
 NUM_PIXELS = 10
-NUM_PIXELS_EXTRA = 10
+NUM_PIXELS_EXTRA = 20
 
 # Exponential scaling factor.
 # Should probably be in range -10 .. 10 to be reasonable.
@@ -134,7 +134,7 @@ while True:
             pixels[i] = volume_color(i)
         # Light up the peak pixel and animate it slowly dropping.
         if c >= peak:
-            peak = min(c, NUM_PIXELS - 1)
+            peak = min(c, NUM_PIXELS + NUM_PIXELS_EXTRA - 1)
         elif peak > 0:
             peak = peak - 1
         if peak > 0 and peak <= NUM_PIXELS:
@@ -146,9 +146,9 @@ while True:
             pixels_extra[i-NUM_PIXELS] = volume_color(i)
         # Light up the peak pixel and animate it slowly dropping.
         if c >= peak:
-            peak = min(c, NUM_PIXELS_EXTRA - 1)
+            peak = min(c, NUM_PIXELS + NUM_PIXELS_EXTRA - 1)
         elif peak > 0:
             peak = peak - 1
         if peak > NUM_PIXELS:
-           pixels_extra[int(peak-NUM_PIXELS)] = PEAK_COLOR
+            pixels_extra[int(peak-NUM_PIXELS)] = PEAK_COLOR
     pixels_extra.show()
