@@ -4,6 +4,10 @@ For usage on RPi Pico @JeremySCook 12/28/2022
 
 Builtin LED goes high when distance is under 12 cm
 Works with VBUS or VSYS ~5VDC on Raspberry Pi Pico
+
+SoopaDoopa Update 2023-11-18: Repeated calls to adafruit_hcsr04 within the loop was causing the code to fail on recent versions of CircuitPython on Pi Pico W.
+Modified to code only get the distance of each HC-SR04 ultrasonic sensors only once per loop, storing the results in variables.
+
 """
 
 import time
@@ -33,18 +37,23 @@ midi.send(ControlChange(64, 0))  # sustain CC - e.g. 0 = off, 127 = on
 while True:
     try:
         print(current_note)
+
+        sonar1Distance = sonar1.distance
+        sonar2Distance = sonar2.distance
+        
         #print(int(sonar1.distance))
-        if sonar1.distance < 12 and led.value == 0:
-            current_note = int(sonar2.distance/4) + 40
+        if sonar1Distance < 12 and led.value == 0:
+            current_note = int(sonar2Distance/4) + 40
             midi.send(NoteOn(current_note, 120))  # G sharp 2nd octave (1 per Garageband), 44th key on piano - velocity = 120
             key_on = 1
             led.value = 1
             
         # midi.send(NoteOff(44, 120))
-        elif sonar1.distance >= 12 and key_on == 1: # Add a dead zone?          
+        elif sonar1Distance >= 12 and key_on == 1: # Add a dead zone?          
             midi.send(NoteOff(current_note, 120))
             key_on = 0
             led.value = 0
     except RuntimeError:
         print("Retrying sonar1!")
     time.sleep(0.05)
+
