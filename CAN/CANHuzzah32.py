@@ -2,7 +2,8 @@
 #
 # SPDX-License-Identifier: MIT
 #
-# Modified by JCook Sept 21st, 2023 to work with Huzzah32 - WIP
+# Modified CAN Sender Example to work with Huzzah32
+# By Jeremy Cook Sept 21st, 2023
 
 import struct
 import time
