@@ -1,6 +1,6 @@
 RP20-Footie capacitive foot pedal macro pad/MIDI interface with Raspberry Pi Pico
 
-New version available on Tindie: https://www.tindie.com/products/30042
+New version available on JC Devices: http://jcdevices.com/
 
 ![image](rpfootie1.jpg)
 
